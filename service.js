@@ -31,7 +31,7 @@ app.post("/", async (req, res) => {
     // console.log(getBody);
     console.log(req.body.state);
     const param = req.body;
-    res.redirect(`https://playgalaxy.net/oauth/callback?${queryString}`);
+    res.redirect(`coolish://callback?https://playgalaxy.net/oauth/callback?${queryString}`);
   });
 
   app.listen(port, () => {
