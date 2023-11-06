@@ -23,10 +23,10 @@ app.post("/", async (req, res) => {
   });
 
   app.post("/oauth/callback", (req, res) => {
-    console.log(req);
+    console.log(req.body);
     // const queryString = new URLSearchParams(req.body).toString();
-    const getBody = req.bodyParser.urlencoded();
-    console.log(getBody);
+    // const getBody = req.bodyParser.urlencoded();
+    // console.log(getBody);
     res.redirect(`coolish://callback?${req.body}`);
   });
 
