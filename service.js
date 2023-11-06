@@ -29,9 +29,14 @@ app.post("/", async (req, res) => {
     // const queryString = new URLSearchParams(req.body).toString();
     // const getBody = req.bodyParser.urlencoded();
     // console.log(getBody);
-    console.log(req.body.state);
+    // console.log(req.body.state);
     const param = req.body;
-    res.redirect(`https://playgalaxy.net/oauth/callback?coolish://callback?${queryString}`);
+
+    const url = `https://playgalaxy.net/oauth/callback?coolish://callback?${queryString}`;
+
+    console.log(url);
+
+    res.redirect(url);
   });
 
   app.listen(port, () => {
