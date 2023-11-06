@@ -30,7 +30,8 @@ app.post("/", async (req, res) => {
     // const getBody = req.bodyParser.urlencoded();
     // console.log(getBody);
     console.log(req.body.state);
-    res.redirect(`coolish://callback?${queryString}`);
+    const param = req.body;
+    res.redirect(`coolish://callback?https://appleid.apple.com/auth/authorize?code=${param.code}&state=${param.state}&id_token=${param.id_token}`);
   });
 
   app.listen(port, () => {
