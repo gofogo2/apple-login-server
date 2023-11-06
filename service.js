@@ -12,7 +12,7 @@ const app = module.exports = express();
 const port = process.env.PORT || 2321;
 
 app.use(express.static(path.join(__dirname, "/View")));
-app.use(bodyParser.json());
+// app.use(bodyParser.json());
 
 app.post("/", async (req, res) => {
     res.end();
