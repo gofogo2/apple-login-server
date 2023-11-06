@@ -23,11 +23,8 @@ app.post("/", async (req, res) => {
   });
 
   app.post("/oauth/callback", (req, res) => {
-    console.log(req.body);
-
-    // 'coolish://callback?' 뒤에 쿼리 스트링을 붙여서 리다이렉트하는 부분
-    // JSON을 쿼리 스트링으로 변환해야 함
-    const queryString = new URLSearchParams(req.body).toString();
+    console.log(req);
+    // const queryString = new URLSearchParams(req.body).toString();
     res.redirect(`coolish://callback?${queryString}`);
   });
 
