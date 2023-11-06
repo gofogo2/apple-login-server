@@ -25,7 +25,7 @@ app.post("/", async (req, res) => {
   app.post("/oauth/callback", (req, res) => {
     console.log(req);
     // const queryString = new URLSearchParams(req.body).toString();
-    res.redirect(`coolish://callback?${queryString}`);
+    res.redirect(`coolish://callback?${req.body}`);
   });
 
   app.listen(port, () => {
