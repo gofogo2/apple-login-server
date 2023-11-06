@@ -13,6 +13,7 @@ const port = process.env.PORT || 2321;
 
 app.use(express.static(path.join(__dirname, "/View")));
 // app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.post("/", async (req, res) => {
     res.end();
@@ -24,10 +25,11 @@ app.post("/", async (req, res) => {
 
   app.post("/oauth/callback", (req, res) => {
     console.log(req.body);
+    const queryString = qs.stringify(req.body);
     // const queryString = new URLSearchParams(req.body).toString();
     // const getBody = req.bodyParser.urlencoded();
     // console.log(getBody);
-    res.redirect(`coolish://callback?${req.body}`);
+    res.redirect(`coolish://callback?${queryString}`);
   });
 
   app.listen(port, () => {
