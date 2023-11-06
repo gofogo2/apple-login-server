@@ -32,7 +32,7 @@ app.post("/", async (req, res) => {
     // console.log(req.body.state);
     const param = req.body;
 
-    const url = `https://playgalaxy.net/oauth/callback/coolish://callback?${queryString}`;
+    const url = `https://playgalaxy.net/oauth/callback?coolish://callback?${queryString}?client_id=net.playgalaxy.applogin`;
 
     console.log(url);
 
