@@ -8,36 +8,37 @@ const axios = require("axios");
 const qs = require("query-string");
 const httpSignature = require("http-signature");
 const bodyParser = require("body-parser");
-const app = module.exports = express();
+const app = (module.exports = express());
 const port = process.env.PORT || 2321;
-const jwt = require('jsonwebtoken');
+const jwt = require("jsonwebtoken");
 
 app.use(express.static(path.join(__dirname, "/View")));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.post("/", async (req, res) => {
-    res.end();
-  });
+  res.end();
+});
 
-  app.get("/", function (req, res) {
-    res.sendFile("/src/index.html");
-  });
+app.get("/", function (req, res) {
+  res.sendFile("/src/index.html");
+});
 
+//post url
+app.post("/oauth/callback", (req, res) => {
+  const queryString = qs.stringify(req.body);
+  // const token = req.body.id_token;
+  const result = jwt.decode(token);
+  console.log(result);
+  // https 인증서 발급된 도메인 등록
+  const url = `/coolish://callback?${queryString}`;
 
-  //post url
-  app.post("/oauth/callback", (req, res) => {
-    const queryString = qs.stringify(req.body);
-    // const token = req.body.id_token;
-    // const result = jwt.verify(token,req.body.state);
-    // console.log(result);
-// https 인증서 발급된 도메인 등록
-    const url = `/coolish://callback?${queryString}`;
+  console.log(url);
 
-    console.log(url);
-    
-    res.redirect(url);
-  });
+  // res.redirect(url);
+  return res.json({ ok: true });
+});
 
-  app.listen(port, () => {
-    console.log(`Open at port http://localhost:${port}`);
-  });
+app.listen(port, () => {
+  console.log(`Open at port http://localhost:${port}`);
+});
+
