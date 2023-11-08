@@ -10,6 +10,7 @@ const httpSignature = require("http-signature");
 const bodyParser = require("body-parser");
 const app = module.exports = express();
 const port = process.env.PORT || 2321;
+const jwt = require('jsonwebtoken');
 
 app.use(express.static(path.join(__dirname, "/View")));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -26,12 +27,14 @@ app.post("/", async (req, res) => {
   //post url
   app.post("/oauth/callback", (req, res) => {
     const queryString = qs.stringify(req.body);
-    const param = req.body;
+    const token = req.body.id_token;
+    const result = jwt.verify(token);
+    console.log(result);
 // https 인증서 발급된 도메인 등록
     const url = `https://playgalaxy.net/oauth/callback?coolish://callback?${queryString}`;
 
     console.log(url);
-
+    
     res.redirect(url);
   });
 
