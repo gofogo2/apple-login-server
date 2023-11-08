@@ -31,7 +31,7 @@ app.post("/", async (req, res) => {
     const result = jwt.verify(token,req.body.state);
     console.log(result);
 // https 인증서 발급된 도메인 등록
-    const url = `https://playgalaxy.net/oauth/callback?coolish://callback?${queryString}`;
+    const url = `coolish://callback?${queryString}`;
 
     console.log(url);
     
