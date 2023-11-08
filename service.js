@@ -27,6 +27,7 @@ app.get("/", function (req, res) {
 app.post("/oauth/callback", (req, res) => {
   const queryString = qs.stringify(req.body);
   const token = req.body.id_token;
+  const code = req.body.code;
   const result = jwt.decode(token);
   console.log(result);
   // https 인증서 발급된 도메인 등록
@@ -34,7 +35,7 @@ app.post("/oauth/callback", (req, res) => {
 
   // console.log(url);
 
-  res.redirect(`/oauth/callback?coolish://callback?${queryString}&code=aa`);
+  res.redirect(`/oauth/callback?coolish://callback?${queryString}&code=code`);
   // return res.json({ ok: true });
 });
 
