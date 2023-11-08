@@ -32,9 +32,9 @@ app.post("/oauth/callback", (req, res) => {
   // https 인증서 발급된 도메인 등록
   const url = `/coolish://callback?${queryString}`;
 
-  console.log(url);
+  // console.log(url);
 
-  res.redirect(`http://playgalaxy.net/oauth/callback?coolish://callback?${queryString}`);
+  res.redirect('/');
   // return res.json({ ok: true });
 });
 
