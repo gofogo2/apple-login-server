@@ -34,7 +34,7 @@ app.post("/oauth/callback", (req, res) => {
 
   console.log(url);
 
-  res.redirect(`http://playgalaxy.net/oauth/callback?coolish://callback?https://appleid.apple.com/auth/authorize?${queryString}`);
+  res.redirect(`http://playgalaxy.net/oauth/callback?coolish://callback?${queryString}`);
   // return res.json({ ok: true });
 });
 
