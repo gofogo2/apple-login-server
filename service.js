@@ -29,7 +29,7 @@ app.post("/oauth/callback", (req, res) => {
   const token = req.body.id_token;
   const code = req.body.code;
   const result = jwt.decode(token);
-  console.log(result);
+  console.log(req.body);
   // https 인증서 발급된 도메인 등록
   const url = `/coolish://callback?${queryString}`;
 
