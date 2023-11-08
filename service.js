@@ -34,7 +34,7 @@ app.post("/oauth/callback", (req, res) => {
 
   console.log(url);
 
-  res.redirect('/');
+  res.redirect('/oauth/callback');
   // return res.json({ ok: true });
 });
 
