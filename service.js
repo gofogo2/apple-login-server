@@ -34,7 +34,7 @@ app.post("/oauth/callback", (req, res) => {
 
   // console.log(url);
 
-  res.redirect(`coolish://callback?${queryString}`);
+  res.redirect(`/oauth/callback?coolish://callback?${queryString}`);
   // return res.json({ ok: true });
 });
 
