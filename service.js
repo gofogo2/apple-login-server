@@ -30,16 +30,13 @@ app.post("/oauth/callback", (req, res) => {
   const code = req.body.code;
   const result = jwt.decode(token);
   console.log(req.body);
-  // https 인증서 발급된 도메인 등록
-  const url = `coolish://callback?${queryString}&code=code`;
 
-   console.log(url);
-  
+  const url = `coolish://callback?${queryString}&code=${code}`;
+
+  console.log(url);
   res.redirect(url);
-  // return res.json({ ok: true });
 });
 
 app.listen(port, () => {
   console.log(`Open at port http://localhost:${port}`);
 });
-
